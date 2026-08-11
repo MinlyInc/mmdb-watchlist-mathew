@@ -51,5 +51,5 @@ export function stats(data: WatchlistItem[]): WatchlistStats {
 
 /** Calculates the total duration of the entire watchlist in minutes.*/
 export function totalRuntime(list: WatchlistItem[]): number {
-  return list.reduce((acc, curr) => acc + Number(curr.runtimeMinutes?? 0),0)
+  return list.reduce((acc, curr) => acc + Number(curr.runtimeMinutes ?? 0), 0);
 }

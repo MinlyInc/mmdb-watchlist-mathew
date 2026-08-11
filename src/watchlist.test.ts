@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { add, markWatched, remove, stats, unwatched ,totalRuntime} from "./watchlist.ts";
+import { add, markWatched, remove, stats, unwatched, totalRuntime } from "./watchlist.ts";
 import type { WatchlistItem } from "./types.ts";
 
 function film(overrides: Partial<WatchlistItem> = {}): WatchlistItem {

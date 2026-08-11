@@ -20,7 +20,7 @@ npm test
 | `markWatched(list, id)` | Marks a film watched.                                                 |
 | `unwatched(list)`       | The films still to watch, in the order they were added.               |
 | `stats(list)`           | A summary: how many, how long, and the average rating.                |
-| `totalRuntime(list)`    | Returns the total runtime in minutes of every film on the list.     |
+| `totalRuntime(list)`    | Returns the total runtime in minutes of every film on the list.       |
 
 Every function returns a **new** list rather than changing the one you passed in.
 
