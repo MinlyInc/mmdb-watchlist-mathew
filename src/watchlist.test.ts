@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { add, markWatched, remove, stats, unwatched } from "./watchlist.ts";
+import { add, markWatched, remove, stats, unwatched ,totalRuntime} from "./watchlist.ts";
 import type { WatchlistItem } from "./types.ts";
 
 function film(overrides: Partial<WatchlistItem> = {}): WatchlistItem {
@@ -91,5 +91,12 @@ describe("stats", () => {
       film({ id: 3, rating: null }),
     ];
     expect(stats(list).averageRating).toBeCloseTo(7);
+  });
+});
+
+describe("totalRuntime", () => {
+  it("returns total runtime in minutes of every film on the list", () => {
+    const list = [film({ runtimeMinutes: 120 }), film({ runtimeMinutes: 80 })];
+    expect(totalRuntime(list)).toBe(200);
   });
 });
