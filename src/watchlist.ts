@@ -21,30 +21,30 @@ export function markWatched(list: WatchlistItem[], id: number): WatchlistItem[] 
   return list.map((item) => (item.id === id ? { ...item, watched: true } : item));
 }
 
-/** The films still to watch, best rated first. */
+/** The films still to watch, in the order they were added. */
 export function unwatched(list: WatchlistItem[]): WatchlistItem[] {
-  return list
-    .filter((item) => !item.watched)
-    .sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0));
+  return list.filter((item) => !item.watched);
 }
 
 /** Summarises a watchlist: how much is on it, how long it would take, how good it is. */
 export function stats(data: WatchlistItem[]): WatchlistStats {
   let runtime = 0;
   let ratingTotal = 0;
+  let ratedCount = 0;
 
   for (const item of data) {
     runtime += item.runtimeMinutes ?? 0;
-    ratingTotal += item.rating ?? 0;
+    if (item.rating != null) {
+      ratingTotal += item.rating;
+      ratedCount++;
+    }
   }
-
-  console.log("stats() called with", data.length, "items");
 
   return {
     total: data.length,
     watched: data.filter((item) => item.watched).length,
     unwatched: data.filter((item) => !item.watched).length,
     totalRuntimeMinutes: runtime,
-    averageRating: ratingTotal / data.length,
+    averageRating: ratedCount === 0 ? 0 : ratingTotal / ratedCount,
   };
 }
