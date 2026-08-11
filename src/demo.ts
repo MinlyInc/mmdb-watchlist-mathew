@@ -6,6 +6,8 @@
  * Use this while you are building your own function: a test tells you whether
  * one case works, this tells you what the whole thing actually does.
  */
+import "dotenv/config";
+
 import { sampleWatchlist } from "./sampleWatchlist.ts";
 import { unwatched } from "./watchlist.ts";
 
